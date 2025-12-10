@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรไฟล์ พสิษฐิ์ เพชรอำพันธุ์</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Kanit:wght@300;400;600;700&family=Sarabun:wght@300;400;600&family=Sacramento&display=swap');
+
+        :root {
+            --bg-color: #f4f1ea;
+            --line-color: #333;
+            --accent-orange: #e88d4d;
+            --text-dark: #1a1a1a;
+            --font-heading: 'Kanit', sans-serif;
+            --font-body: 'Sarabun', sans-serif;
+            --font-handwriting-th: 'Charm', cursive;
+            --font-handwriting-en: 'Sacramento', cursive;
+        }
+
+        body {
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            font-family: var(--font-body);
+            color: var(--text-dark);
+        }
+
+        main.card-container {
+            width: 800px;
+            background-color: var(--bg-color);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            overflow: hidden;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.6fr 1fr; 
+            grid-template-rows: 140px auto auto 1fr;
+            border: 1px solid var(--line-color);
+        }
+
+        .box {
+            border-right: 1px solid var(--line-color);
+            border-bottom: 1px solid var(--line-color);
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .no-right-border { border-right: none; }
+        .no-bottom-border { border-bottom: none; }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            line-height: 1;
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+            color: #111;
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            margin: 0 0 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        h3.en-heading {
+             font-family: 'Oswald', sans-serif;
+             letter-spacing: 1.5px;
+        }
+
+        p { font-size: 0.9rem; line-height: 1.6; color: #444; margin-bottom: 10px; }
+
+        .handwritten {
+            font-family: var(--font-handwriting-en);
+            color: var(--accent-orange);
+            font-size: 2.2rem;
+            line-height: 1.1;
+            transform: rotate(-5deg);
+            margin-top: 10px;
+            font-weight: 400;
+        }
+
+        ul.software-icons {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        ul.software-icons li {
+            width: 28px; height: 28px;
+            color: white;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            font-size: 0.65rem;
+            margin-left: 5px;
+            font-family: sans-serif;
+        }
+        /* เปลี่ยนสีไอคอนให้เข้ากับ Code */
+        .icon-html { background: #e34c26; color: #fff; }
+        .icon-css { background: #264de4; color: #fff; }
+        .icon-sql { background: #00758f; color: #fff; }
+
+        table.exp-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        table.exp-table td {
+            padding-bottom: 15px;
+            vertical-align: top;
+        }
+        .year-col { width: 100px; font-weight: 700; }
+        .role-title { font-weight: 700; display: block; font-family: var(--font-heading);}
+        .role-desc { font-size: 0.8rem; color: #666; }
+
+        .mini-form input, .mini-form textarea {
+            width: 90%;
+            padding: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            background: rgba(255,255,255,0.5);
+            font-family: var(--font-body);
+        }
+        .mini-form button {
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: var(--font-heading);
+            border-radius: 4px;
+        }
+
+        .philosophy { grid-column: 1 / 2; }
+        .header-info { grid-column: 2 / 3; display: flex; justify-content: space-between; align-items: flex-start; z-index: 2; }
+        .profile-section { grid-column: 1 / 2; padding-right: 40px; }
+        .image-spacer { grid-column: 2 / 3; grid-row: 2 / 4; border-bottom: 1px solid var(--line-color); background: transparent; }
+        .experience-section { grid-column: 1 / 2; }
+        .interest-section { grid-column: 1 / 2; border-bottom: none; }
+        
+        .details-section {
+            grid-column: 2 / 3;
+            background-color: #f4f1ea;
+            border-bottom: none;
+            border-right: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 6;
+            position: relative;
+        }
+
+        .language-row { display: flex; align-items: center; margin-bottom: 8px; font-size: 0.85rem; font-weight: 700; font-family: var(--font-heading); }
+        .bar { height: 8px; background: #d1d1d1; flex-grow: 1; margin-left: 15px; border-radius: 4px;}
+        .fill { height: 100%; background: var(--accent-orange); display: block; border-radius: 4px;}
+
+        .model-image {
+            position: absolute;
+            left: 460px;
+            top: 90px;
+            width: 380px;
+            height: auto;
+            z-index: 5;
+            filter: drop-shadow(10px 10px 15px rgba(0,0,0,0.3));
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="card-container">
+        
+        <img src="unnamed-removebg-preview.png" alt="รูปโปรไฟล์ พสิษฐิ์" class="model-image">
+
+        <section class="box philosophy">
+            <h3>MY PHILOSOPHY</h3>
+            <div class="handwritten">Code is Poetry<br>& Logic</div>
+        </section>
+
+        <header class="box header-info no-right-border">
+            <div>
+                <h3>Student</h3>
+                <p style="margin:0; font-weight:bold;">RMUTL</p>
+            </div>
+            <div>
+                <h3>Skills</h3>
+                <ul class="software-icons">
+                    <li class="icon-html">Html</li>
+                    <li class="icon-css">Css</li>
+                    <li class="icon-sql">Sql</li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="box profile-section">
+            <h1>Pasit<br>Petoumphun</h1>
+            <p>สวัสดีครับ ผมเป็นนักศึกษาสาขาวิศวกรรมซอฟต์แวร์ ชั้นปีที่ 1 (หลักสูตรเทียบโอน) คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา เชียงใหม่ครับ</p>
+            <p>ผมมีความสนใจในด้านการเขียนโปรแกรมและการพัฒนาเทคโนโลยีใหม่ๆ ผมมุ่งมั่นที่จะนำความรู้ที่ได้จากการศึกษามาต่อยอดเพื่อพัฒนาซอฟต์แวร์ที่มีคุณภาพในอนาคตครับ</p>
+        </section>
+
+        <div class="box image-spacer no-right-border"></div>
+
+        <section class="box experience-section">
+            <h2>ประวัติการศึกษา</h2>
+            
+            <table class="exp-table">
+                <thead>
+                    <tr>
+                        <th colspan="2" style="text-align:left; padding-bottom:10px; color:#999; font-size:0.75rem; font-family: var(--font-heading);">TIMELINE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="year-col">ก่อนหน้า</td>
+                        <td>
+                            <span class="role-title">ประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)</span>
+                            <span class="role-desc">สาขาเทคโนโลยีคอมพิวเตอร์ (หรือสาขาที่จบมา)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="year-col">ปัจจุบัน</td>
+                        <td>
+                            <span class="role-title">วิศวกรรมซอฟต์แวร์ (เทียบโอน)</span>
+                            <span class="role-desc">มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา เชียงใหม่</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <footer class="box interest-section no-bottom-border">
+            <h2>ความสนใจ</h2>
+            <p style="font-size: 0.85rem; text-align: justify; color: #555;">
+                ผมสนใจในการพัฒนา Web Application, UX/UI Design และเทคโนโลยี AI ผมชอบเรียนรู้ภาษาโปรแกรมใหม่ๆ และติดตามข่าวสารด้าน IT อยู่เสมอเพื่อนำมาปรับใช้กับการเรียน
+            </p>
+        </footer>
+
+        <aside class="box details-section no-bottom-border">
+            <h3>ภาษา</h3>
+            <div class="language-row">
+                <span style="width: 60px;">ไทย</span>
+                <div class="bar"><span class="fill" style="width: 100%;"></span></div>
+            </div>
+            <div class="language-row">
+                <span style="width: 60px;">อังกฤษ</span>
+                <div class="bar"><span class="fill" style="width: 65%;"></span></div>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <h3>ติดต่อฉัน</h3>
+                <form class="mini-form">
+                    <input type="text" placeholder="ชื่อผู้ติดต่อ" required>
+                    <input type="email" placeholder="อีเมล" required>
+                    <textarea rows="2" placeholder="ข้อความ"></textarea>
+                    <button type="submit">ส่งข้อความ</button>
+                </form>
+            </div>
+            
+            <div style="margin-top: 15px; font-size: 0.85rem;">
+                📷 <a href="#" target="_blank" style="text-decoration:none; color:inherit;">@pasit.ipp</a>
+            </div>
+        </aside>
+
+    </main>
+
+</body>
+</html>
